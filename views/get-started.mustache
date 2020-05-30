@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>WE TRANSLATE</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/translate.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <!-- <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href="assets/vendor/datetimepicker/jquery.datetimepicker.min.css" rel="stylesheet" />
+  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css">
+  <link href="assets/vendor/ionicons/css/ionicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <!-- <link href="assets/vendor/venobox/venobox.css" rel="stylesheet"> -->
+
+ 
+  <link href="assets/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    {{#message}}
+
+    <div style="text-align: center" class="alert alert-{{message.type}}">
+        <button type="button" name="close" data-dismiss="alert"> &times;</button>
+        <strong>{{message.intro}}</strong>
+        {{message.message}}
+    </div>
+    {{/message}}
+
+{{> partials/navbar }}
+
+  <!-- ======= Intro Section ======= -->
+  <section id="get-started-form" class="animated fadeInLeft">
+
+    <p>
+        {{#rows}}
+        <ul>
+            <li>{{fromlanguage}}</li>
+            <li>{{tolanguage}}</li>
+            <li>{{context}}</li>
+            <li>{{deliverydate}}</li>
+            <li>{{filename}}</li>
+        </ul>
+
+        {{/rows}}
+    </p>
+    
+   <form  method="post" class="form" id="form" enctype="multipart/form-data">
+
+    <div class="container-fluid py-3 get-started-form" style="width:95%;margin:auto;">
+       <div class="row">
+           <div class="form-group col-lg-6">
+            <label for="fromLanguage">From</label>
+	        <select name="fromLanguage" id="fromLanguage" class="form-control select2">
+	           <option>English (GB)</option> 
+	           <option>Yoruba</option> 
+	           <option>French</option> 
+	           <option>Japanese</option> 
+	           <option>Chinese</option> 
+	           <option>Spanish</option> 
+	        </select>
+           </div>
+
+           <div class="form-group col-lg-6">
+            <label for="toLanguage">To</label>
+	        <select name="toLanguage" id="toLanguage" class="form-control select2">
+	           <option>English (GB)</option> 
+	           <option>Yoruba</option> 
+	           <option>French</option> 
+	           <option>Japanese</option> 
+	           <option>Chinese</option> 
+	           <option>Spanish</option> 
+	        </select>
+           </div>
+       </div>
+
+       <div class="row">
+        <div class="form-group col-lg-6">
+         <label for="context">Context</label>
+         <select name="context" id="context" class="form-control select2">
+            <option>General</option> 
+            <option>Technology</option> 
+            <option>Accounting & Finance</option> 
+            <option>Politics</option> 
+            <option>Education</option> 
+            <option>Artificial Intelligence</option> 
+            <option>Science</option>
+            <option>Art</option>
+            <option>Engineering</option>
+         </select>
+        </div>
+
+        <div class="form-group col-lg-6">
+            <label for="datetimepicker">Delivery Date</label>
+            <input id="datetimepicker" type="text" class="form-control delivery-date" name="deliveryDate" placeholder="Delivery Date" autocomplete="off">
+        </div>
+        
+        </div>
+
+           <div class="row">
+               <div class="col-lg-12">
+                   <div class="form-group file">
+                   <label for="fileUpload" class="file-label"> <span class="fa fa-upload"></span> 
+                    <span class="label-text">Select files to Upload</span></label>
+                <input type="file" name="fileUpload" id="fileUpload" multiple="true">
+                </div>
+               </div>
+           </div>
+
+
+          <button type="submit" formaction="/generate-prices" class="btn btn-block bg-blue my-3 p-2 generate-prices" id="generate-prices">
+              <span class="loading-spin fa fa-spinner fa-spin" id="fa-spin"></span> 
+              <span id="generate-text">Generate Prices</span>
+
+              </button>
+       
+   </div>
+
+   
+{{#show}}
+    <div class="container my-3 text-center">
+        <div class="row">
+
+<!-- Card #1, Starter -->
+            <div class="col-lg-4 col-md-6 col-sm-10 pb-4 d-block m-auto">
+                <div class="pricing-item" style="box-shadow: 0px 0px 30px -7px rgba(0,0,0,0.29);">
+                    <!-- Indicator of subscription type -->
+                    <div class="pt-4 py-4" style="letter-spacing: 2px">
+                        <h4 class="text-blue py-2">Basic</h4>
+                    </div>
+                    <!-- Price class -->
+                    <div class="pricing-price pb-1 text-primary color-primary-text ">
+                        <h1 class="text-blue" style="font-weight: 1000; font-size: 3.5em;">
+                            <span style="font-size: 20px;">$</span>{{ priceBasic}}
+                        </h1>
+                        <small class="text-center text-info">${{pricePerWordBasic}}/word</small>
+                    </div>
+                    <!-- Perks of said subscription -->
+                    <div class="pricing-description pb-3">
+                        <ul class="list-unstyled mt-3 mb-4">
+                            <li class="pl-3 pr-3 text-blue">Basic Translation</li><hr>
+                            <li class="pl-3 pr-3 text-blue">No Review</li><hr>
+                            <li class="pl-3 pr-3 text-blue">Quality control</li>
+                        </ul>
+                    </div>
+                    <!-- Button -->
+                    <div class="pricing-button pb-4">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" data-plan="Basic" data-price="{{priceBasic}}" data-file="{{filename}}">
+                            Order Basic
+                          </button>
+                    </div>
+                </div>
+            </div>
+
+<!-- Card #2, Intermediate -->
+<div class="col-lg-4 col-md-6 col-sm-10 pb-4 d-block m-auto">
+    <div class="pricing-item" style="box-shadow: 0px 0px 30px -7px rgba(0,0,0,0.29);">
+        <div class="pt-4 py-4" style="letter-spacing: 2px">
+            <h4 class="text-blue py-2">Premium</h4>
+        </div>
+        <div class="pricing-price pb-1 text-primary color-primary-text ">
+            <h1 class="text-blue" style="font-weight: 1000; font-size: 3.5em;">
+                <span style="font-size: 20px;">$</span>{{ pricePremium }}
+            </h1>
+            <small class="text-center text-info">${{pricePerWordProf}}/word</small>
+        </div>
+        <div class="pricing-description pb-3">
+            <ul class="list-unstyled mt-3 mb-4">
+                <li class="pl-3 pr-3 text-blue">Premium Translation</li><hr>
+                <li class="pl-3 pr-3 text-blue">Light-review</li><hr>
+                <li class="pl-3 pr-3 text-blue">Proof-reading</li><hr>
+                <li class="pl-3 pr-3 text-blue">Quality control</li>
+            </ul>
+        </div>
+
+        <div class="pricing-button pb-4">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" data-plan="Premium" data-price="{{pricePremium}}" data-file="{{filename}}">
+                Order Premium
+              </button>
+        </div>
+        
+    </div>
+</div>
+          
+<!-- Card #3, Professional -->
+    
+<div class="col-lg-4 col-md-6 col-sm-10 py-2 d-block m-auto">
+    <div class="pricing-item" style="box-shadow: 0px 0px 30px -7px rgba(0,0,0,0.29);">
+        <div class="pt-4 py-4" style="letter-spacing: 2px">
+            <h4 class="text-blue py-2">Professional</h4>
+        </div>
+        <div class="pricing-price pb-1 text-primary color-primary-text ">
+            <h1 class="text-blue" style="font-weight: 1000; font-size: 3.5em;">
+                <span style="font-size: 20px;">$</span>{{ priceProf }}
+            </h1>
+            <small class="text-center text-info">${{pricePerWordPremium}}/word</small>
+        </div>
+        <div class="pricing-description pb-3">
+            <ul class="list-unstyled mt-3 mb-4">
+                <li class="pl-3 pr-3 text-blue">Professional Translation</li><hr>
+                <li class="pl-3 pr-3 text-blue">Light-review</li><hr>
+                <li class="pl-3 pr-3 text-blue">Quality control</li>
+            </ul>
+        </div>
+
+        
+        <div class="pricing-button pb-4">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" data-plan="Professional" data-price="{{priceProf}}" data-file="{{filename}}">
+                Order Professional
+              </button>
+        </div>
+     
+    </div>
+</div>
+
+          
+        </div></div>
+        </div>
+
+        {{/show}}
+    </form>
+</section><!-- End Intro Section -->
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="false">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true" class="fa fa-times"></span>
+          </button>
+        </div>
+        <form action="/pay" method="post">
+        <div class="modal-body">
+            
+          <div class="form-group">
+              <label for="selectedPlan">Selected Plan :-</label>
+              <input type="text" class="form-control" name="selectedPlan" id="selectedPlan" readonly>
+          </div>
+          
+          <div class="form-group">
+            <label for="totalCost">Total Cost :-</label>
+            <input type="text" class="form-control" name="totalCost" id="totalCost" readonly>
+        </div>
+
+        <div class="form-group">
+            <label for="fileName">Filename :-</label>
+            <input type="text" class="form-control" name="fileName" id="fileName">
+        </div>
+
+        <div class="form-group">
+            <label for="useremail">E-mail :-</label>
+            <input type="email" class="form-control" name="useremail" id="useremail" placeholder="Please enter your valid E-mail">
+        </div>
+
+        <div class="form-group">
+            <label for="telephone">Tel. Number :-</label>
+            <input type="number" class="form-control" name="telephone" id="telephone" placeholder="i.e 07085140175">
+        </div>
+
+        <div class="form-group">
+            <label for="notes">Notes for Translator :-</label>
+            <textarea type="text" class="form-control" name="notes" id="notes" placeholder="Enter any other further Description..."></textarea>
+        </div>
+        </div>
+        <div class="modal-footer">
+            
+          <button type="submit" formaction="/pay" formmethod="post" onclick="pay()" id="paybtn" class="btn bg-blue">Complete Order <span class="fa fa-check-circle"></span></button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        
+        </div> </form>
+    
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+{{> partials/footer}}
+
+  
+  <!-- Vendor JS Files -->
+  <!-- <script src="assets/vendor/jquery/jquery.min.js"></script>
+  
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script> -->
+
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+   <script src="assets/vendor/datetimepicker/jquery.datetimepicker.full.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+  <script src="assets/vendor/counterup/counterup.min.js"></script>
+  <script src="assets/vendor/mobile-nav/mobile-nav.js"></script>
+  <script src="assets/vendor/wow/wow.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+  <script src="assets/vendor/venobox/venobox.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+
+  <script>
+      function pay(){
+          document.getElementById("form").submit();
+      }
+  </script>
+
+</body>
+
+</html>
