@@ -175,6 +175,7 @@ app.post("/pay", (request, response) => {
             const context = result.rows[0].context;
             
             let transporter = nodemailer.createTransport({
+                service: 'gmail',
                 host: 'smtp.gmail.com',
                 port: 465,
                 secure: true, // use TLS
