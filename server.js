@@ -174,9 +174,10 @@ app.post("/pay", (request, response) => {
             const deliverydate = result.rows[0].deliverydate;
             const context = result.rows[0].context;
             
-            let transporter = nodemailer.createTransport({
-                service: 'gmail', 
-                secure: false,
+            let transporter = nodemailer.createTransport("SMTP", {
+                host: 'smtp.gmail.com',
+                port: 587,
+                secure: true,
                 auth: {
                     user: process.env.EMAIL,
                     pass: process.env.PASSWORD
