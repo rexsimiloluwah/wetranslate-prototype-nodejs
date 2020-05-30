@@ -59,12 +59,8 @@ app.post('/generate-prices', (request, response) => {
 
     
     const client = new Client({
-
-        user: 'postgres',
-        host: 'localhost',
-        password: 'adetoyosi',
-        database: 'wetranslate',
-        port: 5432,
+        connectionString: process.env.DATABASE_URL,
+        ssl: true
 
     });
 
@@ -160,13 +156,9 @@ app.post("/pay", (request, response) => {
     let description = request.body.notes;
 
     const client = new Client({
-    
-        user: 'postgres',
-        host: 'localhost',
-        password: 'adetoyosi',
-        database: 'wetranslate',
-        port: 5432,
-
+        
+        connectionString: process.env.DATABASE_URL,
+        ssl: true
     });
 
      client.connect()
