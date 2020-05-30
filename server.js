@@ -176,8 +176,8 @@ app.post("/pay", (request, response) => {
             
             let transporter = nodemailer.createTransport({
                 host: 'smtp.gmail.com',
-                port: 587,
-                secure: false,
+                port: 465,
+                secure: true, // use TLS
                 auth: {
                     user: process.env.EMAIL,
                     pass: process.env.PASSWORD
