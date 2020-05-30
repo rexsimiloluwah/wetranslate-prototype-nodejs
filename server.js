@@ -60,7 +60,7 @@ app.post('/generate-prices', (request, response) => {
     
     const client = new Client({
         connectionString: process.env.DATABASE_URL,
-        ssl: true
+        ssl: { rejectUnauthorized: false }
 
     });
 
@@ -158,7 +158,7 @@ app.post("/pay", (request, response) => {
     const client = new Client({
         
         connectionString: process.env.DATABASE_URL,
-        ssl: true
+        ssl: { rejectUnauthorized: false }
     });
 
      client.connect()
